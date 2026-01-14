@@ -1,13 +1,13 @@
 # Service Submission Logger
 
-A Chrome extension + Azure Functions backend system that automatically captures service submission data from internal web applications and stores it in a Fabric Lakehouse.
+Chrome extension and Azure Functions system that automatically captures service submission data from internal web applications and stores it in a Fabric Lakehouse.
 
 ## Overview
 
-This system consists of two main components:
+This system consists of two components:
 
-1. **Chrome Extension** (`/extension`) - Captures page content when users submit service forms
-2. **Azure Function** (`/api`) - Receives captured data and appends it to Fabric Lakehouse files
+1. **Chrome Extension** - Captures page content when users submit service forms
+2. **Azure Function** - Receives captured data and appends it to Fabric Lakehouse files
 
 ## Architecture
 
@@ -24,27 +24,13 @@ ssvf-extension/
 ├── extension/              # Chrome extension (Vite + React + TypeScript)
 │   ├── src/
 │   │   ├── config.ts      # API URL and key configuration
-│   │   ├── content/
-│   │   │   └── main.ts    # Content script (form/button detection)
-│   │   └── popup/
-│   │       ├── index.html
-│   │       ├── main.tsx
-│   │       └── PopupApp.tsx
-│   ├── manifest.json      # Chrome extension manifest (V3)
-│   ├── package.json
-│   ├── tsconfig.json
-│   └── vite.config.ts
+│   │   ├── content/       # Content script (form/button detection)
+│   │   └── popup/         # Extension popup UI
+│   └── manifest.json      # Chrome extension manifest (V3)
 │
 ├── api/                   # Azure Function (Node + TypeScript)
-│   ├── CaptureIngest/
-│   │   ├── function.json
-│   │   └── index.ts       # Main function handler
-│   ├── shared/
-│   │   ├── lakehouseClient.ts  # Lakehouse File API client
-│   │   └── types.ts
-│   ├── package.json
-│   ├── tsconfig.json
-│   ├── host.json
+│   ├── CaptureIngest/     # Main function handler
+│   ├── shared/            # Lakehouse File API client
 │   └── local.settings.json
 │
 └── test-service-page.html # Local test page
@@ -56,10 +42,10 @@ ssvf-extension/
 
 - Node.js 18+ and npm
 - Azure Functions Core Tools (`npm install -g azure-functions-core-tools@4`)
-- Azure CLI (`az login` for authentication)
+- Azure CLI (run `az login` for authentication)
 - Chrome browser
 
-### 1. Extension Setup
+### Extension Setup
 
 ```powershell
 cd extension
@@ -76,18 +62,9 @@ npm run build
 
 **Configure for your domains:**
 
-Edit `extension/manifest.json` and update the `host_permissions` and `content_scripts.matches` arrays with your actual internal web app URLs:
+Edit `extension/manifest.json` and update the `host_permissions` with your internal web app URLs, then rebuild.
 
-```json
-"host_permissions": [
-  "https://your-lsndc-domain.com/*",
-  "https://your-servicepoint-domain.com/*"
-]
-```
-
-Then rebuild: `npm run build` and reload the extension in Chrome.
-
-### 2. Azure Function Setup
+### Azure Function Setup
 
 ```powershell
 cd api
@@ -110,23 +87,13 @@ Edit `api/local.settings.json`:
 }
 ```
 
-Replace:
-- `YOUR_WORKSPACE` with your Fabric workspace name
-- `YOUR_LAKEHOUSE` with your Lakehouse name
-- `your-secure-api-key-here` with a strong API key
-
 **Authentication:**
 
 The function uses `DefaultAzureCredential`, which supports:
 
-1. **Azure CLI** (for local dev): Run `az login`
-2. **Managed Identity** (for Azure deployment): Automatically works when deployed
-3. **Service Principal**: Set environment variables:
-   ```
-   AZURE_CLIENT_ID
-   AZURE_TENANT_ID
-   AZURE_CLIENT_SECRET
-   ```
+- **Azure CLI** (for local dev): Run `az login`
+- **Managed Identity** (for Azure deployment): Automatically works when deployed
+- **Service Principal**: Set environment variables for CLIENT_ID, TENANT_ID, CLIENT_SECRET
 
 **Build and start:**
 
@@ -137,13 +104,13 @@ npm start
 
 The function will start at `http://localhost:7071`
 
-### 3. Extension Configuration
+### Extension Configuration
 
 Update `extension/src/config.ts` with your API details:
 
 ```typescript
-export const API_URL = 'http://localhost:7071/api/captures';  // or your deployed URL
-export const API_KEY = 'your-secure-api-key-here';            // must match function config
+export const API_URL = 'http://localhost:7071/api/captures';
+export const API_KEY = 'your-secure-api-key-here';
 ```
 
 Rebuild the extension after changes:
@@ -164,66 +131,26 @@ Then reload the extension in Chrome.
    cd api
    npm start
    ```
-   
-   Wait for: `Functions: CaptureIngest: [POST] http://localhost:7071/api/captures`
 
 2. **Load the test page:**
    
-   Open `test-service-page.html` in Chrome (file:// URL is fine for testing)
-   
-   **Important:** For the extension to work, you need to either:
-   
-   - Temporarily add `file:///*` to the `host_permissions` in `manifest.json`, OR
-   - Host the test page via a local web server that matches your configured domains
+   Open `test-service-page.html` in Chrome. For the extension to work, temporarily add `file:///*` to the `host_permissions` in `manifest.json`, or host the test page via a local web server.
 
 3. **Verify extension is loaded:**
    
-   - Click the extension icon in Chrome toolbar
-   - You should see "Service logging extension is active"
+   Click the extension icon in Chrome toolbar. You should see "Service logging extension is active".
 
 4. **Test the capture:**
    
-   - Fill out the form on the test page
-   - Click "Submit Service Record"
-   - The form will show a success message
+   Fill out the form on the test page and click "Submit Service Record". The form will show a success message.
 
 5. **Verify the data was captured:**
    
-   **In Chrome DevTools (F12):**
-   ```
-   [Service Logger] Content script loaded on: file:///...
-   [Service Logger] Found 1 form(s), attaching submit listeners
-   [Service Logger] Form 1 submitted
-   [Service Logger] Capturing submission data
-   [Service Logger] Data sent via sendBeacon
-   ```
-
-   **In Azure Function console:**
-   ```
-   [2025-12-02T...] Executing 'Functions.CaptureIngest'
-   [2025-12-02T...] Received capture: { source_url: '...', captured_at: '...', text_length: 1234 }
-   [2025-12-02T...] Appended 1456 bytes to Files/service_logs/2025/12/02/service_logs_2025-12-02.ndjson at offset 0
-   [2025-12-02T...] Successfully appended to: Files/service_logs/2025/12/02/service_logs_2025-12-02.ndjson
-   [2025-12-02T...] Executed 'Functions.CaptureIngest' (Succeeded)
-   ```
+   Check Chrome DevTools Console (F12) for `[Service Logger]` messages and Azure Function console for successful append messages.
 
 6. **Verify the file in Fabric Lakehouse:**
    
-   - Open your Fabric workspace
-   - Navigate to your Lakehouse
-   - Go to **Files** section (not Tables)
-   - Browse to `service_logs/2025/12/02/`
-   - Open `service_logs_2025-12-02.ndjson`
-   - You should see one JSON object per line
-
-### Testing with Real Internal Apps
-
-1. Update `manifest.json` with your actual app URLs
-2. Rebuild and reload the extension
-3. Navigate to one of your internal apps
-4. Open DevTools Console to see extension logs
-5. Submit a service form
-6. Verify in Function logs and Lakehouse
+   Open your Fabric workspace → Lakehouse → Files section → `service_logs/YYYY/MM/DD/` → Open the NDJSON file
 
 ## Data Format
 
@@ -232,7 +159,7 @@ Then reload the extension in Chrome.
 ```json
 {
   "user_id": "unknown",
-  "source_url": "https://lsndc.example.org/services/submit",
+  "source_url": "https://example.org/services/submit",
   "captured_at_utc": "2025-12-02T10:30:45.123Z",
   "raw_text": "All visible page text at time of submission..."
 }
@@ -243,7 +170,7 @@ Then reload the extension in Chrome.
 ```json
 {
   "user_id": "unknown",
-  "source_url": "https://lsndc.example.org/services/submit",
+  "source_url": "https://example.org/services/submit",
   "captured_at_utc": "2025-12-02T10:30:45.123Z",
   "received_at_utc": "2025-12-02T10:30:45.789Z",
   "raw_text": "All visible page text at time of submission..."
@@ -254,19 +181,17 @@ Then reload the extension in Chrome.
 
 ### Extension Content Script
 
-The content script (`extension/src/content/main.ts`) runs on configured pages and:
+The content script runs on configured pages and:
 
 1. Detects forms and submit buttons on page load
 2. Attaches event listeners (without preventing default behavior)
 3. On submit, captures `document.body.innerText`
-4. Sends data using:
-   - First attempt: `navigator.sendBeacon()` (most reliable for page unload)
-   - Fallback: `fetch()` with `keepalive: true`
+4. Sends data using `navigator.sendBeacon()` or `fetch()` with `keepalive: true`
 5. Never blocks or interrupts the actual form submission
 
 ### Azure Function
 
-The function (`api/CaptureIngest/index.ts`):
+The function:
 
 1. Validates the API key from `x-api-key` header
 2. Validates required fields (`source_url`, `raw_text`)
@@ -290,7 +215,7 @@ The `lakehouseClient.ts` module:
 ```powershell
 cd api
 
-# Create a function app (one-time setup)
+# Create a function app
 az functionapp create \
   --resource-group YOUR_RESOURCE_GROUP \
   --name YOUR_FUNCTION_APP_NAME \
@@ -304,9 +229,6 @@ az functionapp create \
 az functionapp identity assign \
   --resource-group YOUR_RESOURCE_GROUP \
   --name YOUR_FUNCTION_APP_NAME
-
-# Grant the managed identity access to your Lakehouse
-# (Use Azure portal to assign "Storage Blob Data Contributor" role)
 
 # Set application settings
 az functionapp config appsettings set \
@@ -323,15 +245,7 @@ func azure functionapp publish YOUR_FUNCTION_APP_NAME
 
 ### Update Extension for Production
 
-1. Update `extension/src/config.ts` with your deployed function URL:
-   ```typescript
-   export const API_URL = 'https://YOUR_FUNCTION_APP_NAME.azurewebsites.net/api/captures';
-   export const API_KEY = 'your-production-api-key';
-   ```
-
-2. Rebuild: `npm run build`
-
-3. Package for distribution or deploy to Chrome Web Store
+Update `extension/src/config.ts` with your deployed function URL and rebuild.
 
 ## Troubleshooting
 
@@ -345,25 +259,19 @@ func azure functionapp publish YOUR_FUNCTION_APP_NAME
 
 - Check CORS settings if calling from non-localhost
 - Verify API_KEY matches between extension and function
-- Check function logs: `func start` should show incoming requests
+- Check function logs
 
 ### Lakehouse write failures
 
 - Verify you're authenticated: `az account show`
-- Check managed identity has proper permissions in Azure
+- Check managed identity has proper permissions
 - Confirm `ONE_LAKE_URL` format is correct
 - Ensure the Lakehouse exists and is accessible
 
-### File not appearing in Lakehouse
-
-- It can take a few moments for files to appear in Fabric UI
-- Check the exact path: `Files/service_logs/YYYY/MM/DD/`
-- Verify the function logs show "Successfully appended to: ..."
-
 ## Next Steps
 
-1. **User identification**: Replace `"user_id": "unknown"` by extracting actual user info from the page or session
-2. **Better parsing**: Instead of `document.body.innerText`, extract structured data from forms
+1. **User identification**: Replace `"user_id": "unknown"` by extracting actual user info from the page
+2. **Better parsing**: Extract structured data from forms instead of raw text
 3. **Monitoring**: Add Application Insights to the Azure Function
 4. **Error handling**: Implement retry logic in the extension
 5. **Data processing**: Create Fabric Dataflows or Notebooks to parse and transform the NDJSON files

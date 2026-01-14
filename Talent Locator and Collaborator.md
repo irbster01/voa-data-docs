@@ -1,6 +1,6 @@
 # Expertise Marketplace
 
-A professional employee expertise directory built with React, Azure Static Web Apps, and Azure Cosmos DB.
+Professional employee expertise directory built with React, Azure Static Web Apps, and Azure Cosmos DB.
 
 ## Features
 
@@ -20,31 +20,36 @@ A professional employee expertise directory built with React, Azure Static Web A
 
 ### Local Development
 
-1. Install dependencies:
+Install dependencies:
+
 ```bash
 npm install
 ```
 
-2. Start the development server:
+Start the development server:
+
 ```bash
 npm run dev
 ```
 
-3. Open [http://localhost:5173](http://localhost:5173) in your browser
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
 ### Azure Functions API (Optional for local testing)
 
-1. Navigate to the API directory:
+Navigate to the API directory:
+
 ```bash
 cd api
 ```
 
-2. Install API dependencies:
+Install API dependencies:
+
 ```bash
 npm install
 ```
 
-3. Start the Functions runtime:
+Start the Functions runtime:
+
 ```bash
 npm start
 ```
@@ -71,12 +76,11 @@ npm start
 ## Deployment to Azure
 
 This app is designed to be deployed to Azure Static Web Apps. The deployment will automatically:
+
 - Build the React frontend
 - Deploy Azure Functions API
 - Configure authentication with Azure AD
 - Set up Cosmos DB integration
-
-### Deploy using Azure Portal or Azure CLI
 
 See [Azure Static Web Apps documentation](https://learn.microsoft.com/azure/static-web-apps/) for deployment instructions.
 
