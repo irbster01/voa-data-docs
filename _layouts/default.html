@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en-US">
+  <head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}">
+    <title>{{ page.title | default: site.title }}</title>
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      <div style="margin-bottom: 20px; padding: 10px 0; border-bottom: 1px solid #e1e4e8;">
+        <a href="{{ '/' | relative_url }}" style="text-decoration: none; color: #0366d6;">← Back to Home</a>
+      </div>
+      
+      {{ content }}
+      
+      <div style="margin-top: 50px; padding-top: 20px; border-top: 1px solid #e1e4e8; text-align: center; color: #666;">
+        <a href="{{ '/' | relative_url }}">Home</a> | 
+        <a href="mailto:data-team@voanorthla.org">Contact Data Team</a>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/anchor-js/4.1.0/anchor.min.js" integrity="sha256-lZaRhKri35AyJSypXXs4o6OPFTbTmUoltBbDCbdzegg=" crossorigin="anonymous"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>

@@ -1,0 +1,13 @@
+theme: jekyll-theme-cayman
+title: VOA Data Documentation
+description: Documentation for VOA's data systems, applications, and technical guides
+show_downloads: false
+
+plugins:
+  - jekyll-relative-links
+
+relative_links:
+  enabled: true
+  collections: false
+
+markdown: kramdown

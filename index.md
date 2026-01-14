@@ -1,46 +1,105 @@
+---
+layout: default
+title: Home
+---
+
 # VOA Data Documentation
 
-Documentation for VOA's data warehouse, reporting pipelines, data systems, and internal applications.
+Welcome to the VOA data and systems documentation hub. Find guides, technical documentation, and resources for VOA's data systems and internal applications.
+
+<div style="display: flex; gap: 20px; margin: 30px 0; flex-wrap: wrap;">
+  <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+    <h3>👥 For Staff</h3>
+    <p>Data references, reports, and how-to guides</p>
+    <a href="#data-systems">View Data Systems →</a>
+  </div>
+  <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+    <h3>🛠️ For Users</h3>
+    <p>Internal tools and applications</p>
+    <a href="#applications">View Applications →</a>
+  </div>
+  <div style="flex: 1; min-width: 250px; padding: 20px; border: 1px solid #ddd; border-radius: 8px;">
+    <h3>💻 For Developers</h3>
+    <p>Technical guides and deployment docs</p>
+    <a href="#technical">View Tech Docs →</a>
+  </div>
+</div>
 
 ---
 
-## 📊 Data Systems & Program References
+## 📊 Data Systems & Program References {#data-systems}
 
-Documentation explaining data structures, tables, and reporting systems (non-technical audience).
+*For program staff and data analysts*
 
-- [CIS (Communities In Schools) Data Reference](CIS-Data-Reference.md) - CIS tables, fields, and use cases
-- [Lighthouse Attendance Pipeline](Lighthouse-Attendance-Pipeline.md) - Lighthouse student attendance tracking
-- [Billing Matrix Deep Dive](Billing%20Matrix%20Deep%20Dive.md) - Analysis of billing matrix configuration crisis and systematic solutions
-
----
-
-## 🛠️ Internal Applications & Tools
-
-User-facing applications and tools built for VOA staff.
-
-- [HR Command](HR%20Revamp.md) - HR workflow platform with Personnel Action Forms, electronic signatures, and approvals
-- [Expertise Marketplace](Talent%20Locator%20and%20Collaborator.md) - Employee expertise directory and skills search
-- [Service Submission Logger](SSVF%20TFA%20Fix.md) - Chrome extension for capturing service submission data
-- [HMIS CSV Fixer for VA FY2026](HMIS%20Export.md) - Tool to transform HMIS exports to VA format requirements
-
----
-
-## 💻 Technical Documentation & Deployment
-
-Deep technical guides for developers and system administrators.
-
-- [Container App Deployment to Azure](Container%20App%20Deployment%20to%20Azure.md) - Azure deployment guide for containerized applications
-- [Setup Instructions](SETUP-INSTRUCTIONS.md) - Development environment setup
+<table>
+  <tr>
+    <td><strong><a href="CIS-Data-Reference">CIS Data Reference</a></strong></td>
+    <td>Communities In Schools tables, fields, and use cases</td>
+  </tr>
+  <tr>
+    <td><strong><a href="Lighthouse-Attendance-Pipeline">Lighthouse Attendance Pipeline</a></strong></td>
+    <td>Student attendance tracking system documentation</td>
+  </tr>
+  <tr>
+    <td><strong><a href="Billing Matrix Deep Dive">Billing Matrix Analysis</a></strong></td>
+    <td>Analysis of billing matrix configuration crisis and solutions</td>
+  </tr>
+</table>
 
 ---
 
-## Coming Soon
+## 🛠️ Internal Applications & Tools {#applications}
 
-- ServicePoint Data Reference
-- Credible Data Reference  
-- School District Data (JCampus/Caddo Parish)
-- HMIS Reporting
-- Maintenance & Operations Data
+*User-facing applications for VOA staff*
+
+<table>
+  <tr>
+    <td><strong><a href="HR Revamp">HR Command</a></strong></td>
+    <td>Personnel Action Forms, e-signatures, and approval workflows</td>
+  </tr>
+  <tr>
+    <td><strong><a href="Talent Locator and Collaborator">Expertise Marketplace</a></strong></td>
+    <td>Search and discover colleagues by skills and expertise</td>
+  </tr>
+  <tr>
+    <td><strong><a href="SSVF TFA Fix">Service Submission Logger</a></strong></td>
+    <td>Chrome extension for capturing service submission data</td>
+  </tr>
+  <tr>
+    <td><strong><a href="HMIS Export">HMIS CSV Fixer</a></strong></td>
+    <td>Transform HMIS exports to VA FY2026 format</td>
+  </tr>
+</table>
+
+---
+
+## 💻 Technical Documentation & Deployment {#technical}
+
+*For developers and system administrators*
+
+<table>
+  <tr>
+    <td><strong><a href="Container App Deployment to Azure">Container App Deployment</a></strong></td>
+    <td>Deploy containerized apps to Azure Container Apps</td>
+  </tr>
+  <tr>
+    <td><strong><a href="SETUP-INSTRUCTIONS">Development Setup</a></strong></td>
+    <td>Local development environment configuration</td>
+  </tr>
+</table>
+
+---
+
+<details>
+<summary><strong>📋 Coming Soon</strong></summary>
+<ul>
+  <li>ServicePoint Data Reference</li>
+  <li>Credible Data Reference</li>
+  <li>School District Data (JCampus/Caddo Parish)</li>
+  <li>HMIS Reporting</li>
+  <li>Maintenance & Operations Data</li>
+</ul>
+</details>
 
 ---
 
@@ -52,4 +111,6 @@ This documentation explains the structure and purpose of data tables, reports, p
 
 ---
 
-*Last updated: January 13, 2026 | For questions or corrections, contact the Data Team*
+<p style="text-align: center; color: #666; font-size: 0.9em;">
+  Last updated: January 13, 2026 | <a href="mailto:data-team@voanorthla.org">Contact the Data Team</a>
+</p>
