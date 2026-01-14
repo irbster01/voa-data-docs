@@ -4,22 +4,16 @@ Multi-stage dataflow pipeline for tracking and reporting Lighthouse program stud
 
 ## Pipeline Flow Diagram
 
-```mermaid
-graph TD
-    A[OneLake Files: ServicePoint/Lighthouse Grades/*.csv] --> B[raw_lighthouse_grades]
-    B --> C[lighthouse_grades_transform]
-    D[clean_lighthouse_entries] --> C
-    E[lighthouse_client_master] --> C
-    C --> F[1q_lh_grades]
-    C --> G[2q_lh_grades]
-    
-    style A fill:#e1f5ff
-    style B fill:#fff4e6
-    style C fill:#f3e5f5
-    style D fill:#fff4e6
-    style E fill:#fff4e6
-    style F fill:#e8f5e9
-    style G fill:#e8f5e9
+```
+📁 OneLake Files: ServicePoint/Lighthouse Grades/*.csv
+    ↓
+📊 raw_lighthouse_grades
+    ↓
+🔄 lighthouse_grades_transform ← 📊 clean_lighthouse_entries
+    ↑                            ← 📊 lighthouse_client_master
+    ↓
+    ├─→ 📋 1q_lh_grades
+    └─→ 📋 2q_lh_grades
 ```
 
 ---

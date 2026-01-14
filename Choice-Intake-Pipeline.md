@@ -4,50 +4,31 @@ Comprehensive dataflow pipeline for ingesting, transforming, and analyzing intak
 
 ## Pipeline Flow Diagram
 
-```mermaid
-graph TD
-    A[OneLake Files: ServicePoint/Choice Intake/*.csv] --> B[raw_sp_choice_intake]
-    B --> C[choice_intake_transform]
-    D[active_choice_clients] --> C
-    
-    C --> E[active_intakes]
-    C --> F[active_choice_with_intake]
-    C --> G[2025_intake_refTable]
-    
-    G --> H[2025_household_internet]
-    G --> I[2025_choice_pcp]
-    G --> J[2025_choice_internet]
-    G --> K[2025_choice_computer]
-    G --> L[2025_choice_race]
-    G --> M[2025_choice_age]
-    G --> N[2025_choice_disability]
-    G --> O[2025_health_ins]
-    G --> P[2025_employment_refTable]
-    
-    P --> Q[2025_employment_types]
-    P --> R[2025_6mo_employed]
-    P --> S[2025_base_employment]
-    
-    G --> T[2025_early_learning]
-    G --> U[2025_pos_development]
-    
-    style A fill:#e1f5ff
-    style B fill:#fff4e6
-    style C fill:#f3e5f5
-    style D fill:#fff4e6
-    style E fill:#e8f5e9
-    style F fill:#e8f5e9
-    style G fill:#fff9c4
-    style H fill:#e8f5e9
-    style I fill:#e8f5e9
-    style J fill:#e8f5e9
-    style K fill:#e8f5e9
-    style L fill:#e8f5e9
-    style M fill:#e8f5e9
-    style N fill:#e8f5e9
-    style O fill:#e8f5e9
-    style P fill:#fff9c4
-    style Q fill:#e8f5e9
+```
+📁 OneLake Files: ServicePoint/Choice Intake/*.csv
+    ↓
+📊 raw_sp_choice_intake
+    ↓
+🔄 choice_intake_transform ← 📊 active_choice_clients
+    ↓
+    ├─→ 📋 active_intakes
+    ├─→ 📋 active_choice_with_intake
+    └─→ 📋 2025_intake_refTable
+         ↓
+         ├─→ 📊 2025_household_internet
+         ├─→ 📊 2025_choice_pcp
+         ├─→ 📊 2025_choice_internet
+         ├─→ 📊 2025_choice_computer
+         ├─→ 📊 2025_choice_race
+         ├─→ 📊 2025_choice_age
+         ├─→ 📊 2025_choice_disability
+         ├─→ 📊 2025_health_ins
+         ├─→ 📋 2025_employment_refTable
+         │    ├─→ 📊 2025_employment_types
+         │    ├─→ 📊 2025_6mo_employed
+         │    └─→ 📊 2025_base_employment
+         ├─→ 📊 2025_early_learning
+         └─→ 📊 2025_pos_development
     style R fill:#e8f5e9
     style S fill:#e8f5e9
     style T fill:#e8f5e9
