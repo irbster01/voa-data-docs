@@ -83,7 +83,7 @@ cp .env.example .env
 npx prisma generate
 npx prisma migrate deploy
 npm run dev
-````
+```
 
 ### 2. Extension Setup
 
