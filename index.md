@@ -52,4 +52,4 @@ This documentation explains the structure and purpose of data tables, reports, p
 
 ---
 
-*For questions or corrections, contact the Data Team*
+*Last updated: January 13, 2026 | For questions or corrections, contact the Data Team*
