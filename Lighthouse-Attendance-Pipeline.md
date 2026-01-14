@@ -1,53 +1,13 @@
 # Lighthouse Attendance Pipeline
 
-<script type="module">
-  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-  mermaid.initialize({ startOnLoad: true, theme: 'dark' });
-</script>
-
 Multi-stage dataflow pipeline for calculating lighthouse program attendance rates across 4 nine-week periods.
 
 ## Pipeline Flow Diagram
 
 ```mermaid
-graph TB
-    A[raw_sp_entries] --> B[Stage 1: clean_lighthouse_entries]
-    C[raw_sp_services] --> D[Stage 2: clean_lighthouse_services]
-    B --> E[Stage 3: lighthouse_client_master]
-    F[raw_sp_demographics] --> E
-    G[raw_lighthouse_registration] --> E
-    D --> H[Stage 4: lighthouse_sessions_attended]
-    E --> I[Stage 5: lighthouse_sessions_possible]
-    J[lighthouse_dates] --> I
-    H --> K[Stage 6: lighthouse_attendance_final]
-    I --> K
-    E --> K
-    L[silver_lighthouse.Lighthouse Matched with JCampus] --> K
-    K --> M[lighthouse_attendance_detail]
-    K --> N[attendance_summary_80_schools]
-    K --> O[attendance_summary_other_schools]
-    K --> P[attendance_averages_by_location]
-    K --> Q[unmatched_clients]
-    
-    style B fill:#e1f5ff
-    style D fill:#e1f5ff
-    style E fill:#e1f5ff
-    style H fill:#e1f5ff
-    style I fill:#e1f5ff
-    style K fill:#fff4e1
-    style M fill:#e8f5e9
-    style N fill:#e8f5e9
-    style O fill:#e8f5e9
-    style P fill:#e8f5e9
-    style Q fill:#e8f5e9
-```
+Multi-stage dataflow pipeline for calculating lighthouse program attendance rates across 4 nine-week periods.
 
-## Pipeline Architecture
-
-### Stage 1: clean_lighthouse_entries
-**Input**: `raw_sp_entries`  
-**Output**: `clean_lighthouse_entries` (lakehouse table)  
-**Purpose**: Deduplicate entries, keep only lighthouse programs  
+## Pipeline Architecture entries, keep only lighthouse programs  
 **Logic**: Group by client_id, take max entry_date and exit_date  
 **Columns**: client_id, entry_date, exit_date, program_name
 

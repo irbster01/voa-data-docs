@@ -11,7 +11,16 @@
 
 ## Step 2: Copy Your Docs to the New Repo
 
-In your terminal (from `c:\dev\active\fab-cicd\docs`):
+**Copy these from your private repo:**
+- `docs/index.md` (the home page)
+- `docs/CIS-Data-Reference.md`
+- `docs/Lighthouse-Attendance-Pipeline.md`
+- Any future documentation you create
+
+**Do NOT copy:**
+- Any actual dataflow code, credentials, or client data
+
+In your terminal:
 
 ```powershell
 # Create a new folder for the public repo
@@ -23,18 +32,13 @@ cd voa-data-docs
 git init
 git branch -M main
 
-# Copy your docs (do this manually or via PowerShell)
-# Copy these files from c:\dev\active\fab-cicd\docs:
-# - index.md (the home page)
-# - CIS-Data-Reference.md
-# - _config.yml
-# - Any other docs you want public
+# Copy your doc files here (manually or via Copy-Item)
 
 # Add and commit
 git add .
 git commit -m "Initial documentation"
 
-# Connect to GitHub (replace with your actual repo URL)
+# Connect to GitHub
 git remote add origin https://github.com/irbster01/voa-data-docs.git
 git push -u origin main
 ```
@@ -56,6 +60,8 @@ GitHub will build your site. Refresh the Pages settings page to see the URL.
 
 Your docs will be live at: **https://irbster01.github.io/voa-data-docs/**
 
+No Jekyll themes - just clean GitHub markdown styling.
+
 ## Step 5: Share the Link
 
 Send that URL to your team. No login needed - they just click and read!
@@ -71,12 +77,10 @@ When you update docs in your private repo:
    ```powershell
    cd c:\dev\active\voa-data-docs
    git add .
-   git commit -m "Updated CIS documentation"
+   git commit -m "Updated documentation"
    git push
    ```
 3. GitHub Pages automatically rebuilds (takes ~2 minutes)
-
----
 
 ## What Files to Copy
 
