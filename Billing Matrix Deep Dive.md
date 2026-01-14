@@ -1,3 +1,8 @@
+---
+layout: default
+title: Billing Matrix Deep Dive
+---
+
 # SQL Analysis Repository - Billing Matrix Crisis
 
 This repository contains the SQL analysis that uncovered the billing matrix crisis affecting our revenue cycle. The analysis reveals systematic configuration issues that began in August 2024.

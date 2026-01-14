@@ -1,3 +1,8 @@
+---
+layout: default
+title: HR Command
+---
+
 # HR Command
 
 Modern HR workflow orchestration platform with Personnel Action Form (PAF) management, electronic signatures, and real-time approvals.
