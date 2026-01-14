@@ -51,8 +51,8 @@ Complete reference for CIS data tables, dataflows, and reporting structure in th
 ---
 
 ### raw_cisdm_progress_monitoring
-**Source**: CIS Data Management (CISDM) - Progress Monitoring Export  
-**Update Frequency**: Manual export from CISDM system  
+**Source**: CIS Data Management (CISDM) - Metric Tracking - All Student Data (Student Metric Data All Progress)
+**Update Frequency**: Manual export from CISDM system; trailing 9 weeks for outcomes, preceding 9 weeks end for documentation  
 **Primary Use**: Academic and behavioral goal tracking
 
 **Key Columns**:
@@ -101,7 +101,7 @@ Complete reference for CIS data tables, dataflows, and reporting structure in th
 ---
 
 ### raw_cisdm_accreditation (Student Drill)
-**Source**: CIS Data Management (CISDM) - Accreditation Student Drill  
+**Source**: CIS Data Management (CISDM) - Accreditation Student Drilldown sheet  
 **Update Frequency**: Manual export from CISDM system  
 **Primary Use**: Compliance and accreditation reporting
 
@@ -142,7 +142,7 @@ Complete reference for CIS data tables, dataflows, and reporting structure in th
 **Notes**:
 - Used to verify CIS program compliance with national accreditation standards
 - Tracks documentation completeness and service delivery metrics
-- Critical for annual accreditation reviews
+- There are some additional elements used like tracking checkins per month
 
 ---
 
@@ -154,6 +154,7 @@ Complete reference for CIS data tables, dataflows, and reporting structure in th
 **Notes**:
 - Details what supports/interventions are planned for each student
 - Links to student support plans
+- Allows the ability to see time per specific reports as well as the support received data
 
 ---
 
