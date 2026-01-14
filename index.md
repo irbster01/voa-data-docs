@@ -40,6 +40,14 @@ Welcome to the VOA data and systems documentation hub. Find guides, technical do
     <td><strong><a href="Lighthouse-Attendance-Pipeline">Lighthouse Attendance Pipeline</a></strong></td>
     <td>Student attendance tracking system documentation</td>
   </tr>
+  <tr>
+    <td><strong><a href="Lighthouse-Grades-Pipeline">Lighthouse Grades Pipeline</a></strong></td>
+    <td>Student grades and academic performance tracking</td>
+  </tr>
+  <tr>
+    <td><strong><a href="Choice-Intake-Pipeline">Choice Intake Pipeline</a></strong></td>
+    <td>Choice program intake and enrollment processing</td>
+  </tr>
 </table>
 
 ---
