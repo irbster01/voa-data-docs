@@ -15,6 +15,7 @@
 - `docs/index.md` (the home page)
 - `docs/CIS-Data-Reference.md`
 - `docs/Lighthouse-Attendance-Pipeline.md`
+- `docs/assets/css/style.css` (GitHub dark mode styling)
 - Any future documentation you create
 
 **Do NOT copy:**
