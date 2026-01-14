@@ -65,7 +65,7 @@ Add all application secrets to Key Vault:
 az keyvault secret set `
   --vault-name $VAULT_NAME `
   --name "DATABASE-URL" `
-  --value "sqlserver://voanla-ops-sql.database.windows.net:1433;database=voanla-ops-db;encrypt=true"
+  --value "sqlserver://YOUR_SQL_SERVER.database.windows.net:1433;database=YOUR_DATABASE;encrypt=true"
 
 # JWT Secret
 az keyvault secret set `

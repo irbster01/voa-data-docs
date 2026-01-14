@@ -429,25 +429,25 @@ The HR Command system is now working with these features:
 **Why This Matters:** These are must-have features before we can launch to all staff. They prevent errors and handle real-world scenarios.
 
 #### 1.1 Require Signatures Before Signing
-**The Problem:** Right now, someone can try to "sign" a form without actually creating their signature first, which causes errors.
+**The Problem:** Users can attempt to sign forms without having a signature on file, causing errors.
 
-**The Solution:** Before anyone can sign, the system will check if they've created their signature. If not, a friendly message appears: "Please create your signature in Settings first" with a button to take them there.
+**The Solution:** System validates signature existence before allowing form signing. Users are prompted to create a signature if one doesn't exist.
 
 **Time Needed:** 2-3 hours  
-**Impact:** Prevents confusion and failed signatures
+**Impact:** Prevents errors and improves user experience
 
 ---
 
 #### 1.2 Ability to Reject Forms
-**The Problem:** Currently, if HR or a VP doesn't agree with a request, there's no way to formally reject it or send it back with feedback.
+**The Problem:** No formal rejection workflow exists for forms that cannot be approved.
 
-**The Solution:** Add a "Reject" button next to "Approve" that requires the person to explain why. The form returns to the employee with the feedback visible.
+**The Solution:** Add rejection capability with required feedback. Forms return to submitter with explanation.
 
 **What Changes:**
 - New "Rejected" status for forms
 - Required text box for rejection reason
-- Rejected forms appear in a separate "Rejected" section
-- Employee can see exactly why their request was denied
+- Rejected forms appear in a separate section
+- Submitters can see rejection reasoning
 
 **Time Needed:** 4-5 hours  
 **Impact:** Handles real-world denials professionally and transparently
@@ -455,16 +455,16 @@ The HR Command system is now working with these features:
 ---
 
 #### 1.3 Request Changes Instead of Rejecting
-**The Problem:** Sometimes a form just needs a small correction (wrong date, typo in job title). Rejecting it entirely is harsh.
+**The Problem:** Minor errors require full rejection when simple corrections would suffice.
 
-**The Solution:** Add a "Request Corrections" button that sends the form back to the employee for editing.
+**The Solution:** Add "Request Corrections" workflow that returns forms for editing.
 
 **How It Works:**
-1. HR reviews a form and notices a mistake
-2. Clicks "Request Corrections" and types what needs fixing
-3. Form returns to employee with HR's comments at the top
-4. Employee makes the changes and resubmits
-5. Form goes back through normal approval process
+1. Reviewer identifies needed corrections
+2. Submits correction request with specific feedback
+3. Form returns to submitter for edits
+4. Submitter makes changes and resubmits
+5. Form continues through approval process
 
 **Time Needed:** 5-6 hours  
 **Impact:** Faster corrections, better collaboration, less frustration
@@ -472,22 +472,22 @@ The HR Command system is now working with these features:
 ---
 
 #### 1.4 Form Validation (Preventing Mistakes)
-**The Problem:** People can currently submit incomplete forms or enter invalid data (like an effective date in the past).
+**The Problem:** Forms can be submitted with incomplete or invalid data.
 
-**The Solution:** Real-time checking as people fill out the form, with helpful error messages.
+**The Solution:** Real-time validation with clear error messages.
 
 **What Gets Checked:**
-- All required fields filled in (name, employee ID, action type, etc.)
-- Dates are valid and not in the past
-- Salary numbers make sense (positive, formatted correctly)
-- For promotions: new salary is higher than old salary
-- For raises: new grade level is higher than current
+- All required fields are complete
+- Date fields contain valid dates
+- Numeric fields contain appropriate values
+- Business logic rules are enforced
+- Data consistency across related fields
 
 **What Users See:**
-- Fields turn red if there's a problem
-- Clear error message below each field: "Effective date cannot be in the past"
-- Submit button is disabled until everything is correct
-- Summary at top shows remaining issues: "2 problems remaining"
+- Visual indicators for invalid fields
+- Clear, actionable error messages
+- Submit button disabled until validation passes
+- Summary of remaining validation issues
 
 **Time Needed:** 4-5 hours  
 **Impact:** Dramatically reduces errors and back-and-forth
@@ -559,9 +559,9 @@ The HR Command system is now working with these features:
 
 ### Phase 4: Better Data Quality (Week 4)
 **What It Adds:** 
-- Valid position titles and salary ranges in the system
-- Smarter date validation (suggests next pay period start date)
-- Action-specific requirements (promotions must include new job title)
+- Valid position titles and compensation ranges in the system
+- Smarter date validation with helpful suggestions
+- Action-specific validation requirements
 
 **Why It Helps:** Ensures data is accurate and consistent  
 **Time:** 2 days

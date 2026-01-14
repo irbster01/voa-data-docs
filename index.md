@@ -40,10 +40,6 @@ Welcome to the VOA data and systems documentation hub. Find guides, technical do
     <td><strong><a href="Lighthouse-Attendance-Pipeline">Lighthouse Attendance Pipeline</a></strong></td>
     <td>Student attendance tracking system documentation</td>
   </tr>
-  <tr>
-    <td><strong><a href="Billing Matrix Deep Dive">Billing Matrix Analysis</a></strong></td>
-    <td>Analysis of billing matrix configuration crisis and solutions</td>
-  </tr>
 </table>
 
 ---
