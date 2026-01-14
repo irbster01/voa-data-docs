@@ -85,7 +85,6 @@ When you update docs in your private repo:
 - `docs/CIS-Data-Reference.md`
 - `docs/Lighthouse-Attendance-Pipeline.md`
 - `docs/_config.yml` (GitHub Pages theme config)
-- `docs/_layouts/` folder (entire folder with default.html for Mermaid support)
 - Any future documentation you create
 
 **DO NOT copy:**

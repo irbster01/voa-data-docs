@@ -1,5 +1,10 @@
 # Lighthouse Attendance Pipeline
 
+<script type="module">
+  import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+  mermaid.initialize({ startOnLoad: true, theme: 'dark' });
+</script>
+
 Multi-stage dataflow pipeline for calculating lighthouse program attendance rates across 4 nine-week periods.
 
 ## Pipeline Flow Diagram

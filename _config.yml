@@ -14,12 +14,6 @@ theme: jekyll-theme-midnight      # Dark with blue accents (CURRENT)
 title: VOA Data Documentation
 description: Documentation for data systems, pipelines, and reporting
 
-# Enable Mermaid diagrams
-markdown: kramdown
-kramdown:
-  input: GFM
-  syntax_highlighter: rouge
-
 # Optional: Add navigation links
 # header_pages:
 #   - index.md
