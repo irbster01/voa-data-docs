@@ -1,3 +1,8 @@
+---
+layout: default
+title: HR Command - Azure Deployment Guide
+---
+
 # HR Command - Azure Deployment Guide
 
 Complete guide for deploying the HR Command backend API to Azure Container Apps with Key Vault secrets management and managed identity.

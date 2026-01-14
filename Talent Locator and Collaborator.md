@@ -1,3 +1,8 @@
+---
+layout: default
+title: Expertise Marketplace
+---
+
 # Expertise Marketplace
 
 Professional employee expertise directory built with React, Azure Static Web Apps, and Azure Cosmos DB.

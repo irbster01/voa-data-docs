@@ -1,3 +1,8 @@
+---
+layout: default
+title: Service Submission Logger
+---
+
 # Service Submission Logger
 
 Chrome extension and Azure Functions system that automatically captures service submission data from internal web applications and stores it in a Fabric Lakehouse.
