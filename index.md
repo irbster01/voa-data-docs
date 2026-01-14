@@ -6,7 +6,7 @@ Documentation for VOA's data warehouse, reporting pipelines, and data systems.
 
 ### Program Data Systems
 - [CIS (Communities In Schools) Data Reference](CIS-Data-Reference.md) - CIS tables, fields, and use cases
-- [Lighthouse Attendance Pipeline](../servicepoint/transformations/lighthouse_pipeline/README.md) - Lighthouse student attendance tracking
+- [Lighthouse Attendance Pipeline](Lighthouse-Attendance-Pipeline.md) - Lighthouse student attendance tracking
 
 ### Coming Soon
 - ServicePoint Data Reference

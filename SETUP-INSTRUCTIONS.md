@@ -83,6 +83,7 @@ When you update docs in your private repo:
 **Copy these from your private repo:**
 - `docs/index.md` (the home page - GitHub Pages needs this filename)
 - `docs/CIS-Data-Reference.md`
+- `docs/Lighthouse-Attendance-Pipeline.md`
 - `docs/_config.yml` (GitHub Pages theme config)
 - Any future documentation you create
 
