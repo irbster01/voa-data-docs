@@ -4,8 +4,7 @@ Multi-stage dataflow pipeline for calculating lighthouse program attendance rate
 
 ## Pipeline Flow Diagram
 
-```mermaid
-Multi-stage dataflow pipeline for calculating lighthouse program attendance rates across 4 nine-week periods.
+
 
 ## Pipeline Architecture entries, keep only lighthouse programs  
 **Logic**: Group by client_id, take max entry_date and exit_date  
@@ -63,7 +62,7 @@ Each stage writes to lakehouse, next stage reads from lakehouse tables.
 ---
 
 ## How the Numbers Are Calculated
-*Plain-language explanation of data operations for non-technical readers*
+
 
 ### Stage 0: Collection ###
 **Process**: In ServicePoint run report xx - Auto Entry v3 report
